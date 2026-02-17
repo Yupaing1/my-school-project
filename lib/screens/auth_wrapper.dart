@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/auth_provider.dart';
+import 'login_screen.dart';
+import 'home_screen.dart';
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
+    // ပထမဆုံး loading ပြချင်ရင် ဒီမှာ ထည့်လို့ရတယ်
+    if (authProvider.user == null) {
+      return const LoginScreen();
+    } else {
+      return const HomeScreen();
+    }
+  }
+}
